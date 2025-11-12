@@ -1,0 +1,14 @@
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\bin\Debug\net9.0\Hoshiko.Data.deps.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\bin\Debug\net9.0\Hoshiko.Data.runtimeconfig.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\bin\Debug\net9.0\Hoshiko.Data.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\bin\Debug\net9.0\Hoshiko.Data.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.csproj.AssemblyReference.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.AssemblyInfoInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.AssemblyInfo.cs
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.csproj.CoreCompileInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\refint\Hoshiko.Data.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\Hoshiko.Data.genruntimeconfig.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Data\obj\Debug\net9.0\ref\Hoshiko.Data.dll

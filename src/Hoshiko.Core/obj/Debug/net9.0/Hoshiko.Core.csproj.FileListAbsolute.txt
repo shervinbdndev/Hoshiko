@@ -1,0 +1,16 @@
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\bin\Debug\net9.0\Hoshiko.Core.deps.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\bin\Debug\net9.0\Hoshiko.Core.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\bin\Debug\net9.0\Hoshiko.Core.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\bin\Debug\net9.0\Hoshiko.Domain.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\bin\Debug\net9.0\Hoshiko.Domain.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.csproj.AssemblyReference.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.AssemblyInfoInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.AssemblyInfo.cs
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.csproj.CoreCompileInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.sourcelink.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko..B88BE88E.Up2Date
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\refint\Hoshiko.Core.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\Hoshiko.Core.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Core\obj\Debug\net9.0\ref\Hoshiko.Core.dll

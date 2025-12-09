@@ -1,0 +1,12 @@
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\bin\Debug\net9.0\Hoshiko.Domain.deps.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\bin\Debug\net9.0\Hoshiko.Domain.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\bin\Debug\net9.0\Hoshiko.Domain.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.AssemblyInfoInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.AssemblyInfo.cs
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.csproj.CoreCompileInputs.cache
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.sourcelink.json
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\refint\Hoshiko.Domain.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\Hoshiko.Domain.pdb
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Domain\obj\Debug\net9.0\ref\Hoshiko.Domain.dll

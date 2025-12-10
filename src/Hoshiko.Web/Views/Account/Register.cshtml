@@ -1,39 +1,58 @@
+@{
+    Layout = "_AuthLayout";
+}
 @model Hoshiko.Web.Models.RegisterViewModel
 
-<h2>Register</h2>
+<div class="auth-brand">
+    <div class="logo">H</div>
+    <div>
+        <div class="auth-title">ثبت‌نام در هوشیکو</div>
+        <div class="auth-sub">یک حساب جدید بسازید تا بازی را آغاز کنید</div>
+    </div>
+</div>
 
 <form asp-action="Register" method="post">
     @Html.AntiForgeryToken()
 
-    <div>
-        <label asp-for="UserName"></label>
-        <input asp-for="UserName" />
-        <span asp-validation-for="UserName"></span>
+    <div class="form-group">
+        <label asp-for="UserName">نام کاربری</label>
+        <input asp-for="UserName" placeholder="نام کاربری انتخابی" />
+        <span class="validation-message" asp-validation-for="UserName"></span>
     </div>
 
-    <div>
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
+    <div class="form-group">
+        <label asp-for="FirstName">نام</label>
+        <input asp-for="FirstName" placeholder="نام" />
+        <span class="validation-message" asp-validation-for="FirstName"></span>
     </div>
 
-    <div>
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
+    <div class="form-group">
+        <label asp-for="LastName">نام خانوادگی</label>
+        <input asp-for="LastName" placeholder="نام خانوادگی" />
+        <span class="validation-message" asp-validation-for="LastName"></span>
     </div>
 
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
+    <div class="form-group">
+        <label asp-for="Password">رمز عبور</label>
+        <input asp-for="Password" type="password" placeholder="رمز عبور" />
+        <span class="validation-message" asp-validation-for="Password"></span>
     </div>
 
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" type="password" />
-        <span asp-validation-for="ConfirmPassword"></span>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">تکرار رمز عبور</label>
+        <input asp-for="ConfirmPassword" type="password" placeholder="تکرار رمز عبور" />
+        <span class="validation-message" asp-validation-for="ConfirmPassword"></span>
     </div>
 
-    <button type="submit">Register</button>
+    <div class="form-group">
+        <button type="submit" class="btn-primary">ثبت‌نام</button>
+    </div>
+
+    <div class="small">
+        <a asp-controller="Account" asp-action="Login">بازگشت به ورود</a>
+    </div>
 </form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

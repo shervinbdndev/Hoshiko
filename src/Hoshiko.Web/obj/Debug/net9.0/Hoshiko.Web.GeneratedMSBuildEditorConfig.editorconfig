@@ -40,8 +40,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Shared/_AuthLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BdXRoTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Stage/Completed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZ2VcQ29tcGxldGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Stage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Stage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Stage/Learn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZ2VcTGVhcm4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/Stage/Quiz.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZ2VcUXVpei5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Scripts/Csharp/ASP/Hoshiko/src/Hoshiko.Web/Views/_ViewImports.cshtml]

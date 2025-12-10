@@ -34,4 +34,31 @@ namespace Hoshiko.Domain.Entities
         public int StageId {get;set;}
         public Stage Stage {get;set;} = null!;
     }
+
+
+    public class UserStageProgress
+    {
+        public int Id {get;set;}
+        public string UserId {get;set;} = null!;
+        public int StageId {get;set;}
+        public Stage Stage {get;set;} = null!;
+
+        public bool IsLearnCompleted {get;set;} = false;
+        public bool IsQuizCompleted {get;set;} = false;
+
+        public DateTime StartedAt {get;set;} = DateTime.UtcNow;
+        public DateTime? CompletedAt {get;set;}
+    }
+
+
+    public class UserQuizAnswer
+    {
+        public int Id {get;set;}
+        public string UserId {get;set;} = null!;
+        public int QuizId {get;set;}
+        public Quiz Quiz {get;set;} = null!;
+        public string SelectedOption {get;set;} = null!;
+        public bool IsCorrect => SelectedOption == Quiz.CorrectOption;
+        public DateTime AnsweredAt {get;set;} = DateTime.UtcNow;
+    }
 }

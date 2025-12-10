@@ -1,0 +1,22 @@
+@model IEnumerable<Hoshiko.Domain.Entities.Quiz>
+
+<h2>آزمون مرحله</h2>
+
+<form method="post" asp-action="SubmitQuiz" asp-route-stageId="@ViewBag.StageId">
+
+@foreach (var q in Model)
+{
+    <div class="card p-3 mb-3">
+        <h4>@q.Question</h4>
+
+        <div>
+            <label><input type="radio" name="answers[@q.Id]" value="A" /> @q.OptionA</label><br />
+            <label><input type="radio" name="answers[@q.Id]" value="B" /> @q.OptionB</label><br />
+            <label><input type="radio" name="answers[@q.Id]" value="C" /> @q.OptionC</label><br />
+            <label><input type="radio" name="answers[@q.Id]" value="D" /> @q.OptionD</label>
+        </div>
+    </div>
+}
+
+    <button type="submit" class="btn btn-primary">ثبت جواب</button>
+</form>

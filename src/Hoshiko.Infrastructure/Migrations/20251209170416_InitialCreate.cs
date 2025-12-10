@@ -53,6 +53,19 @@ namespace Hoshiko.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Stages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsersDomain",
                 columns: table => new
                 {
@@ -172,6 +185,52 @@ namespace Hoshiko.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Learns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Content = table.Column<string>(type: "TEXT", nullable: false),
+                    StageId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Learns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Learns_Stages_StageId",
+                        column: x => x.StageId,
+                        principalTable: "Stages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Quizzes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Question = table.Column<string>(type: "TEXT", nullable: false),
+                    OptionA = table.Column<string>(type: "TEXT", nullable: false),
+                    OptionB = table.Column<string>(type: "TEXT", nullable: false),
+                    OptionC = table.Column<string>(type: "TEXT", nullable: false),
+                    OptionD = table.Column<string>(type: "TEXT", nullable: false),
+                    CorrectOption = table.Column<string>(type: "TEXT", nullable: false),
+                    StageId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quizzes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Quizzes_Stages_StageId",
+                        column: x => x.StageId,
+                        principalTable: "Stages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -208,6 +267,16 @@ namespace Hoshiko.Infrastructure.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Learns_StageId",
+                table: "Learns",
+                column: "StageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Quizzes_StageId",
+                table: "Quizzes",
+                column: "StageId");
         }
 
         /// <inheritdoc />
@@ -229,6 +298,12 @@ namespace Hoshiko.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Learns");
+
+            migrationBuilder.DropTable(
+                name: "Quizzes");
+
+            migrationBuilder.DropTable(
                 name: "UsersDomain");
 
             migrationBuilder.DropTable(
@@ -236,6 +311,9 @@ namespace Hoshiko.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Stages");
         }
     }
 }

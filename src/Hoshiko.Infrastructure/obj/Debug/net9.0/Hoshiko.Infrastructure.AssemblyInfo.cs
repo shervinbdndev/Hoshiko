@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hoshiko.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5defe1b4be7ad4db1504c9682bbed16392d3accd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c9da4e0f6eca3e4b8276d7fd93ee4edddc927e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hoshiko.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hoshiko.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

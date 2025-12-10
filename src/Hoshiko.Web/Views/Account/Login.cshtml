@@ -1,17 +1,41 @@
+@{
+    Layout = "_AuthLayout";
+}
 @model Hoshiko.Web.Models.LoginViewModel
 
-<h2>Login</h2>
+<div class="auth-brand">
+    <div class="logo">H</div>
+    <div>
+        <div class="auth-title">ورود به هوشیکو</div>
+        <div class="auth-sub">لطفاً با نام کاربری و رمز خود وارد شوید</div>
+    </div>
+</div>
+
 <form asp-action="Login" method="post">
     @Html.AntiForgeryToken()
-    <div>
-        <label asp-for="UserName"></label>
-        <input asp-for="UserName"/>
-        <span asp-validation-for="UserName"></span>
+
+    <div class="form-group">
+        <label asp-for="UserName">نام کاربری</label>
+        <input asp-for="UserName" placeholder="نام کاربری خود را وارد کنید" />
+        <span class="validation-message" asp-validation-for="UserName"></span>
     </div>
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password"/>
-        <span asp-validation-for="Password"></span>
+
+    <div class="form-group">
+        <label asp-for="Password">رمز عبور</label>
+        <input asp-for="Password" type="password" placeholder="رمز عبور" />
+        <span class="validation-message" asp-validation-for="Password"></span>
     </div>
-    <button type="submit">Login</button>
+
+    <div class="form-group">
+        <button type="submit" class="btn-primary">ورود</button>
+    </div>
+
+    <div class="row">
+        <div class="small">حساب ندارید؟ <a asp-controller="Account" asp-action="Register">ثبت‌نام</a></div>
+        <div class="small"><a asp-controller="Account" asp-action="Login">فراموشی رمز؟</a></div>
+    </div>
 </form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

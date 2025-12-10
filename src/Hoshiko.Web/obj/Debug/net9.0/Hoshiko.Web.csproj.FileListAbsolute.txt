@@ -217,3 +217,4 @@ D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\ru\Microsoft.Code
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\d3iskhxe5u-t08vvkkyzu.gz

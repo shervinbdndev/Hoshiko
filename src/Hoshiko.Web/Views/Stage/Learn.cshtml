@@ -1,0 +1,15 @@
+@model Hoshiko.Domain.Entities.Stage
+
+<h2>آموزش مرحله: @Model.Name</h2>
+
+@foreach (var item in Model.Learns)
+{
+    <div class="card p-3 mb-3">
+        <h4>@item.Title</h4>
+        <p>@item.Content</p>
+    </div>
+}
+
+<form method="post" asp-action="LearnNext" asp-route-stageId="@Model.Id">
+    <button class="btn btn-success">بعدی</button>
+</form>

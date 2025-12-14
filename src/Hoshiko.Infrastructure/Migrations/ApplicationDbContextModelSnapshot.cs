@@ -17,6 +17,39 @@ namespace Hoshiko.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
+            modelBuilder.Entity("Hoshiko.Domain.Entities.Certificate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CertificateCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Certificates");
+                });
+
             modelBuilder.Entity("Hoshiko.Domain.Entities.Learn", b =>
                 {
                     b.Property<int>("Id")
@@ -155,6 +188,12 @@ namespace Hoshiko.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsQuizCompleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("LastRetryAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("RetryCount")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("StageId")

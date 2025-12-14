@@ -8,5 +8,7 @@ namespace Hoshiko.Core.Interfaces
         Task<bool> CanAccessStageAsync(string userId, int stageId);
         Task MarkLearnCompletedAsync(string userId, int stageId);
         Task MarkQuizCompletedAsync(string userId, int stageId, Dictionary<int, string> quizAnswers);
+        Task<bool> IsStageCompletedAsync(string userId, int stageId);
+        Task<bool> ResetQuizProgressWithLimitAsync(string userId);
     }
 }

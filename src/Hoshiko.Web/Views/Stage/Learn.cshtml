@@ -1,15 +1,93 @@
 @model Hoshiko.Domain.Entities.Stage
 
-<h2>آموزش مرحله: @Model.Name</h2>
+<link rel="stylesheet" href="~/css/learn.css">
 
-@foreach (var item in Model.Learns)
-{
-    <div class="card p-3 mb-3">
-        <h4>@item.Title</h4>
-        <p>@item.Content</p>
+<div class="learn-container">
+
+    <h2 class="learn-title">
+        آموزش مرحله
+        <span>@Model.Name</span>
+    </h2>
+
+    <div id="learn-progress" class="learn-progress"></div>
+
+    <div class="learn-slider">
+
+        @{
+            var index = 0;
+        }
+
+        @foreach (var item in Model.Learns)
+        {
+            <div class="learn-slide @(index == 0 ? "active" : "")">
+                <h3>@item.Title</h3>
+                <p>@item.Content</p>
+            </div>
+            index++;
+        }
+
+        <div class="learn-nav">
+            <button type="button" id="prevBtn" class="nav-btn">
+                قبلی
+            </button>
+
+            <button type="button" id="nextBtn" class="nav-btn primary">
+                بعدی
+            </button>
+        </div>
     </div>
-}
 
-<form method="post" asp-action="LearnNext" asp-route-stageId="@Model.Id">
-    <button class="btn btn-success">بعدی</button>
-</form>
+    <form method="post"
+          asp-action="LearnNext"
+          asp-route-stageId="@Model.Id">
+        @Html.AntiForgeryToken()
+        <button class="learn-btn hidden">
+            ادامه و شروع آزمون
+        </button>
+    </form>
+
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".learn-slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progress = document.getElementById("learn-progress");
+    const completeBtn = document.querySelector(".learn-btn");
+
+    let current = 0;
+    const total = slides.length;
+
+    function updateUI() {
+        slides.forEach(s => s.classList.remove("active"));
+        slides[current].classList.add("active");
+
+        progress.textContent = `بخش ${current + 1} از ${total}`;
+
+        prevBtn.disabled = current === 0;
+
+        if (current === total - 1) {
+            nextBtn.style.display = "none";
+            completeBtn.classList.remove("hidden");
+        } else {
+            nextBtn.style.display = "inline-block";
+            completeBtn.classList.add("hidden");
+        }
+    }
+
+    prevBtn.addEventListener("click", () => {
+        if (current > 0) {
+            current--;
+            updateUI();
+        }
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if (current < total - 1) {
+            current++;
+            updateUI();
+        }
+    });
+
+    updateUI();
+</script>

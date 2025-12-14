@@ -1,0 +1,58 @@
+@model Hoshiko.Domain.Entities.Certificate
+
+<div class="certificate-wrapper">
+    <div class="certificate">
+
+        <div class="certificate-header">
+            <div class="brand">HOSHIKO</div>
+            <div class="brand-sub">پلتفرم آموزش مرحله‌ای</div>
+        </div>
+
+        <h1 class="certificate-title">
+            گواهی‌نامه پایان دوره
+        </h1>
+
+        <p class="certificate-text">
+            بدین‌وسیله گواهی می‌گردد که
+        </p>
+
+        <h2 class="certificate-name">
+            @Model.FullName
+        </h2>
+
+        <p class="certificate-text">
+            با موفقیت کلیه مراحل آموزشی، محتوای درسی و آزمون‌های ارزیابی
+            پلتفرم <strong>هوشیکو</strong> را با رعایت کامل استانداردهای آموزشی
+            به پایان رسانده است.
+        </p>
+
+        <p class="certificate-text">
+            این گواهی به‌عنوان تأیید رسمی مهارت‌ها و تعهد ایشان به یادگیری مستمر
+            صادر گردیده و از تاریخ درج‌شده دارای اعتبار می‌باشد.
+        </p>
+
+        <div class="certificate-info">
+            <div>
+                <span>تاریخ صدور</span>
+                <strong>@Model.IssuedAt.ToLocalTime().ToString("yyyy/MM/dd")</strong>
+            </div>
+
+            <div>
+                <span>شناسه گواهی</span>
+                <strong>@Model.CertificateCode</strong>
+            </div>
+        </div>
+
+        <div class="certificate-footer">
+            <div class="signature">
+                <div class="line"></div>
+                <span>تیم آموزشی هوشیکو</span>
+            </div>
+
+            <div class="seal">
+                تأیید رسمی
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,22 +1,110 @@
 @model IEnumerable<Hoshiko.Domain.Entities.Quiz>
 
-<h2>آزمون مرحله</h2>
+<link rel="stylesheet" href="~/css/quiz.css">
 
-<form method="post" asp-action="SubmitQuiz" asp-route-stageId="@ViewBag.StageId">
+<div class="quiz-wrapper">
 
-@foreach (var q in Model)
-{
-    <div class="card p-3 mb-3">
-        <h4>@q.Question</h4>
-
-        <div>
-            <label><input type="radio" name="answers[@q.Id]" value="A" /> @q.OptionA</label><br />
-            <label><input type="radio" name="answers[@q.Id]" value="B" /> @q.OptionB</label><br />
-            <label><input type="radio" name="answers[@q.Id]" value="C" /> @q.OptionC</label><br />
-            <label><input type="radio" name="answers[@q.Id]" value="D" /> @q.OptionD</label>
+    <div class="quiz-header">
+        <h2>آزمون مرحله</h2>
+        <div class="quiz-progress">
+            <span id="progressText"></span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
         </div>
     </div>
-}
 
-    <button type="submit" class="btn btn-primary">ثبت جواب</button>
-</form>
+    <form method="post" asp-action="SubmitQuiz" asp-route-stageId="@ViewBag.StageId">
+        @Html.AntiForgeryToken()
+
+        <div class="quiz-slides">
+            @{
+                var index = 0;
+            }
+
+            @foreach (var q in Model)
+            {
+                <div class="quiz-slide @(index == 0 ? "active" : "")" data-index="@index">
+                    <h3 class="quiz-question">@q.Question</h3>
+
+                    <div class="quiz-options">
+                        <label class="option">
+                            <input type="radio" name="answers[@q.Id]" value="A">
+                            <span>@q.OptionA</span>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="answers[@q.Id]" value="B">
+                            <span>@q.OptionB</span>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="answers[@q.Id]" value="C">
+                            <span>@q.OptionC</span>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="answers[@q.Id]" value="D">
+                            <span>@q.OptionD</span>
+                        </label>
+                    </div>
+                </div>
+
+                index++;
+            }
+        </div>
+
+        <div class="quiz-nav">
+            <button type="button" id="prevBtn">قبلی</button>
+            <button type="button" id="nextBtn">بعدی</button>
+            <button type="submit" id="submitBtn" class="hidden">ثبت آزمون</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".quiz-slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+    const progressText = document.getElementById("progressText");
+    const progressFill = document.getElementById("progressFill");
+
+    let current = 0;
+    const total = slides.length;
+
+    function updateUI() {
+        slides.forEach(s => s.classList.remove("active"));
+        slides[current].classList.add("active");
+
+        progressText.textContent = `سوال ${current + 1} از ${total}`;
+        progressFill.style.width = `${((current + 1) / total) * 100}%`;
+
+        prevBtn.disabled = current === 0;
+
+        if (current === total - 1) {
+            nextBtn.classList.add("hidden");
+            submitBtn.classList.remove("hidden");
+        } else {
+            nextBtn.classList.remove("hidden");
+            submitBtn.classList.add("hidden");
+        }
+    }
+
+    prevBtn.onclick = () => {
+        if (current > 0) {
+            current--;
+            updateUI();
+        }
+    };
+
+    nextBtn.onclick = () => {
+        if (current < total - 1) {
+            current++;
+            updateUI();
+        }
+    };
+
+    updateUI();
+</script>

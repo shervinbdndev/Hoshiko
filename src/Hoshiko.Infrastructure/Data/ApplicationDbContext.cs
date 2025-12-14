@@ -15,5 +15,6 @@ namespace Hoshiko.Infrastructure.Data
         public DbSet<Learn> Learns => Set<Learn>();
         public DbSet<UserStageProgress> UserStageProgresses => Set<UserStageProgress>();
         public DbSet<UserQuizAnswer> UserQuizAnswers => Set<UserQuizAnswer>();
+        public DbSet<Certificate> Certificates => Set<Certificate>();
     }
 }

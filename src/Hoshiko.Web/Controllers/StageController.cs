@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using Hoshiko.Core.Interfaces;
+using Hoshiko.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Hoshiko.Infrastructure.Repositories;
@@ -12,15 +14,21 @@ namespace Hoshiko.Web.Controllers
     {
         private readonly IStageRepository _stageRepo;
         private readonly IStageProgressService _progressService;
+        private readonly ICertificateService _certificateService;
 
-        public StageController(IStageRepository stageRepo, IStageProgressService progressService)
+        public StageController(
+            IStageRepository stageRepo,
+            IStageProgressService progressService,
+            ICertificateService certificateService
+        )
         {
             _stageRepo = stageRepo;
             _progressService = progressService;
+            _certificateService = certificateService;
         }
 
 
-        private string GetUserId() => User.Identity!.Name!;
+        private string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier)!;
         
 
 
@@ -35,33 +43,6 @@ namespace Hoshiko.Web.Controllers
 
 
 
-        [HttpGet("")]
-        public async Task<IActionResult> Index()
-        {
-            var stages = await _stageRepo.GetAllAsync();
-            return View(stages);
-        }
-
-
-
-        [HttpGet("Details/{id}")]
-        public async Task<IActionResult> Details(int id)
-        {
-            if (_stageRepo is StageRepository concreteRepo)
-            {
-                var stage = await concreteRepo.GetWithQuizzesAsync(id);
-                if (stage == null) return NotFound();
-
-                return View(stage);
-            }
-
-            var s = await _stageRepo.GetByIdAsync(id);
-            if (s == null) return NotFound();
-
-            return View(s);
-        }
-
-
 
         [HttpGet(nameof(Start))]
         public async Task<IActionResult> Start()
@@ -69,10 +50,28 @@ namespace Hoshiko.Web.Controllers
             var userId = GetUserId();
             var nextStage = await _progressService.GetNextStageForUserAsync(userId);
 
-            if (nextStage == null) return View("Completed");
+            if (nextStage == null)
+            {
+                var cert = await _certificateService.TryIssueCertificateAsync(userId);
+                return View(nameof(Completed), cert);
+            }
 
             return RedirectToAction(nameof(Learn), new { stageId = nextStage.Id });
         }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Retry()
+        {
+            var userId = GetUserId();
+
+            await _progressService.ResetQuizProgressWithLimitAsync(userId);
+
+            return RedirectToAction(nameof(Start));
+        }
+
 
 
 
@@ -89,6 +88,7 @@ namespace Hoshiko.Web.Controllers
 
 
         [HttpPost("LearnNext/{stageId}")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LearnNext(int stageId)
         {
             await _progressService.MarkLearnCompletedAsync(GetUserId(), stageId);
@@ -114,11 +114,53 @@ namespace Hoshiko.Web.Controllers
 
 
         [HttpPost("SubmitQuiz/{stageId}")]
-        public async Task<IActionResult> SubmitQuiz(int stageId, [FromForm] Dictionary<int, string> answers)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubmitQuiz(int stageId, [FromForm] Dictionary<int, string>? answers)
         {
-            await _progressService.MarkQuizCompletedAsync(GetUserId(), stageId, answers);
+            var userId = GetUserId();
+
+            var stage = await _stageRepo.GetByIdAsync(stageId);
+            if (stage == null) return NotFound();
+
+            if (!await _progressService.CanAccessStageAsync(userId, stageId)) return Forbid();
+            if (await _progressService.IsStageCompletedAsync(userId, stageId)) return BadRequest("این مرحله قبلا کامل شده و امکان ثبت دوباره وجود ندارد");
+
+            await _progressService.MarkQuizCompletedAsync(userId, stageId, answers!);
 
             return RedirectToAction(nameof(Start));
+        }
+
+
+
+        [HttpGet(nameof(Completed))]
+        public async Task<IActionResult> Completed()
+        {
+            var userId = GetUserId();
+            var hasAnyQuizAttempt = await _certificateService.HasAnyQuizAttemptAsync(userId);
+            if (!hasAnyQuizAttempt) return RedirectToAction(nameof(Start));
+
+            var totalQuizzes = await _certificateService.GetTotalQuizCountAsync();
+            var correctAnswers = await _certificateService.GetUserQuizScoreAsync(userId);
+            var scorePercent = totalQuizzes > 0 ? (correctAnswers * 100 / totalQuizzes) : 0;
+
+            if (scorePercent > 70)
+            {
+                var cert = await _certificateService.TryIssueCertificateAsync(userId);
+
+                if (cert != null)
+                {
+                    return View(cert);
+                } else
+                {
+                    ViewBag.Error = "مدرک هنوز صادر نشده است";
+                    return View();
+                }
+            }
+
+            ViewBag.CanRetry = true;
+            ViewBag.ScorePercent = scorePercent;
+
+            return View((Certificate?)null);
         }
     }
 }

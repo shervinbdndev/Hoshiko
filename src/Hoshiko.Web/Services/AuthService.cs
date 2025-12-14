@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Hoshiko.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Hoshiko.Infrastructure.Identity;
@@ -29,18 +30,41 @@ namespace Hoshiko.Web.Services
             var result = await _userManager.CreateAsync(user, password);
             if (!result.Succeeded) return false;
 
-            await _signInManager.SignInAsync(user, false);
+            await EnsureUserClaimsAsync(user);
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
             return true;
         }
 
 
         public async Task<bool> LoginAsync(string username, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-            return result.Succeeded;
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null) return false;
+
+            var result = await _signInManager.PasswordSignInAsync(user.UserName!, password, false, false);
+            if (!result.Succeeded) return false;
+
+            await EnsureUserClaimsAsync(user);
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
+            return true;
         }
 
 
         public async Task LogoutAsync() => await _signInManager.SignOutAsync();
+
+
+        private async Task EnsureUserClaimsAsync(AppUser user)
+        {
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            var claimsToAdd = new List<Claim>();
+
+            if (!userClaims.Any(c => c.Type == nameof(AppUser.FirstName))) claimsToAdd.Add(new Claim(nameof(AppUser.FirstName), user.FirstName ?? ""));
+            if (!userClaims.Any(c => c.Type == nameof(AppUser.LastName))) claimsToAdd.Add(new Claim(nameof(AppUser.LastName), user.LastName ?? ""));
+            if (claimsToAdd.Any()) await _userManager.AddClaimsAsync(user, claimsToAdd);
+        }
     }
 }

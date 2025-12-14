@@ -56,7 +56,6 @@ D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\Hoshiko.Web.sourc
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\scopedcss\bundle\Hoshiko.Web.styles.css
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\scopedcss\projectbundle\Hoshiko.Web.bundle.scp.css
-D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\76pr6b6z0e-b9sayid5wm.gz
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\lqony8y8kg-61n19gt1b8.gz
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\c1s6d8kc8f-xtxxf3hu2r.gz
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\t8kgrpbnbe-bqjiyaj88i.gz
@@ -218,3 +217,7 @@ D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\tr\Microsoft.Code
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\d3iskhxe5u-t08vvkkyzu.gz
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\oafdfohdgl-ppyq3cltll.gz
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\3ts9ohx4ek-uegzjc4um9.gz
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\hu35gx2jb2-nrdj7tn9mp.gz
+D:\Scripts\Csharp\ASP\Hoshiko\src\Hoshiko.Web\obj\Debug\net9.0\compressed\76pr6b6z0e-gqpxkzmh4x.gz

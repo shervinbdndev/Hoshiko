@@ -1,31 +1,446 @@
-html {
-  font-size: 14px;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+body.koto-body {
+    font-family: "Vazirmatn", sans-serif;
+    background: linear-gradient(to bottom, #0f1b2d 0%, #0a101a 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+
+.koto-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    text-align: center;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.koto-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
 }
 
-body {
-  margin-bottom: 60px;
+.koto-hero-content {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.koto-space {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+
+.sun-core {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        #fff3b0 0%,
+        #f5c542 35%,
+        #f2a900 60%,
+        rgba(245,197,66,0.3) 75%,
+        transparent 100%
+    );
+    box-shadow:
+        0 0 60px rgba(245,197,66,0.8),
+        0 0 120px rgba(245,197,66,0.6),
+        0 0 200px rgba(245,197,66,0.4);
+    animation: sunPulse 6s ease-in-out infinite alternate;
+}
+
+
+.planet {
+    position: absolute;
+    top: 28%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    filter: blur(0.2px);
+    animation: planetFloat 8s ease-in-out infinite alternate;
+}
+
+.planet-left {
+    left: 18%;
+    background: radial-gradient(circle at 30% 30%, #7dd3fc, #2563eb 70%);
+    box-shadow:
+        inset -10px -20px 40px rgba(0,0,0,0.4),
+        0 0 50px rgba(100,150,255,0.4);
+    animation-delay: 1s;
+    animation: planetOrbitLeft 20s linear infinite;
+}
+
+.planet-right {
+    right: 18%;
+    background: radial-gradient(circle at 35% 35%, #e9d5ff, #7c3aed 70%);
+    box-shadow:
+        inset -12px -18px 40px rgba(0,0,0,0.45),
+        0 0 60px rgba(180,100,255,0.45);
+    animation-delay: 2s;
+    animation: planetOrbitRight 25s linear infinite;
+}
+
+
+@keyframes planetOrbitLeft {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateX(80px) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+@keyframes planetOrbitRight {
+    0% { transform: translate(50%, -50%) rotate(0deg) translateX(70px) rotate(0deg); }
+    100% { transform: translate(50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+
+.koto-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    overflow: hidden;
+}
+
+.koto-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,220,100,0.75);
+    border-radius: 50%;
+    animation: particleFloat 4s infinite ease-in-out;
+}
+
+
+.star-field {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 80%, #fff, transparent);
+    opacity: 0.35;
+}
+
+
+.koto-title {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(180deg, #fff2b0 0%, #f5c542 40%, #d4a017 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 25px rgba(245,197,66,0.35);
+    margin: 0 0 12px 0;
+}
+
+.koto-subtitle {
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: rgba(240, 245, 255, 0.9);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    max-width: 420px;
+    margin: 0 auto 25px auto;
+    line-height: 1.8;
+}
+
+
+.koto-btn {
+    position: relative;
+    z-index: 10;
+    padding: 13px 42px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,200,0,0.45);
+    background: rgba(255,200,0,0.18);
+    backdrop-filter: blur(10px);
+    color: #ffe27a;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+
+.koto-btn:hover {
+    background: rgba(255,200,0,0.35);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255,200,0,0.35), 0 0 30px rgba(255,180,0,0.25);
+}
+
+.koto-btn.alt {
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.15);
+}
+
+.koto-btn.alt:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.25), 0 0 30px rgba(255,255,255,0.2);
+}
+
+.koto-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+@keyframes sunPulse {
+    0% { transform: translateX(-50%) scale(1); filter: blur(6px); }
+    100% { transform: translateX(-50%) scale(1.06); filter: blur(9px); }
+}
+
+@keyframes planetFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-18px); }
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-50px) scale(0.4); opacity: 0; }
+}
+
+
+.koto-section {
+    padding: 120px 24px;
+    text-align: center;
+    background: #0a101a;
+}
+
+.koto-section.dark {
+    background: #070c14;
+}
+
+.koto-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #f5c542;
+}
+
+.koto-section p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 2;
+    opacity: 0.9;
+}
+
+
+.user-tooltip {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    min-width: 160px;
+    background: rgba(15, 27, 45, 0.95);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.25s ease;
+    pointer-events: auto;
+}
+
+.koto-user-menu {
+    position: fixed;
+    top: 24px;  
+    left: 24px; 
+    z-index: 1000;
+}
+
+.koto-user-menu:hover .user-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.username {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.logout-btn {
+    width: 100%;
+    border: none;
+    background: rgba(255,80,80,0.15);
+    color: #ff6b6b;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.logout-btn:hover {
+    background: rgba(255,80,80,0.3);
+}
+
+
+@media (max-width: 480px) {
+    .koto-btn {
+        width: 100%;
+    }
+
+    .planet {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sun-core {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+
+.solar-system {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 200px; 
+    z-index: 2;
+}
+
+
+.koto-title,
+.koto-subtitle {
+    position: relative;
+    z-index: 10;
+    margin-top: 350px; 
+}
+
+
+.user-icon {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.user-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.8;
+    color: #ffe27a;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.user-icon:hover svg {
+    transform: rotate(-15deg) scale(1.25) translateY(-3px);
+    filter: drop-shadow(0 0 12px rgba(255,200,0,0.8))
+            drop-shadow(0 0 20px rgba(255,180,0,0.6));
+}
+
+
+.user-icon {
+    animation: floatIcon 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
+
+
+@media (max-width: 480px) {
+    .koto-title {
+        font-size: 3rem;
+        margin-top: 280px;
+    }
+
+    .koto-subtitle {
+        font-size: 1.2rem;
+        margin-top: 12px;
+    }
+
+    .user-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+#hero-text {
+    display: inline-block;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.koto-hero-content .koto-subtitle {
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: rgba(240, 245, 255, 0.9);
+    text-shadow: 0 0 2px rgba(255,255,255,0.2);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.koto-hero-content .koto-subtitle.flash {
+    color: #fff;
+    text-shadow:
+        0 0 2px #fff,
+        0 0 5px #a8e0ff,
+        0 0 10px #88d1ff,
+        0 0 15px #66bfff,
+        0 0 20px #44adff;
+    transition: all 0.15s ease-in-out;
+}
+
+.koto-hero-content .koto-subtitle.flash.shake {
+    animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-2px, 1px) rotate(-1deg); }
+    50% { transform: translate(2px, -1px) rotate(1deg); }
+    75% { transform: translate(-2px, 1px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(45deg, rgba(255,255,255,0.8), transparent);
+    border-radius: 50%;
+    transform: rotate(45deg);
+    opacity: 0.8;
+    animation-name: shoot;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translate(0, 0) rotate(315deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(500px, 500px) rotate(315deg);
+        opacity: 0;
+    }
 }

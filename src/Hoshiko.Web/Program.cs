@@ -5,10 +5,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Hoshiko.Infrastructure.Identity;
 using Hoshiko.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+});
 
 builder.Services.AddHttpContextAccessor();
 
@@ -21,6 +25,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
+builder.Services.AddScoped<ICertificateService, CertificateService>();
 builder.Services.AddScoped<IStageProgressService, StageProgressService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 

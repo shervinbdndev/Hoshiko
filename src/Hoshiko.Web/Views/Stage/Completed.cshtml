@@ -1,1 +1,91 @@
-<h2>تبریک! همه مراحل را تمام کردی</h2>
+@model Hoshiko.Domain.Entities.Certificate
+
+<link rel="stylesheet" href="~/css/completed.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<div class="completed-page">
+
+@if (ViewBag.CanRetry is true)
+{
+    <div class="retry-card">
+        <h3>نتیجه آزمون</h3>
+
+        <p class="score">
+            شما فقط <strong>@(ViewBag.ScorePercent ?? 0)٪</strong> از سوالات را درست پاسخ داده‌اید.
+        </p>
+
+        <p class="hint">
+            برای دریافت مدرک باید حداقل <strong>۷۰٪</strong> پاسخ صحیح داشته باشید.
+        </p>
+
+        <form asp-controller="Stage" asp-action="Retry" method="post" class="actions">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="hoshiko-btn hoshiko-primary">
+                امتحان مجدد
+            </button>
+        </form>
+    </div>
+}
+else if (Model != null)
+{
+    <div class="certificate-container">
+        @await Html.PartialAsync("_Certificate", Model)
+    </div>
+
+    <div class="certificate-tools">
+        <button class="tool-btn" onclick="downloadImage()" title="دانلود تصویر">
+            <i data-lucide="download"></i>
+        </button>
+
+        <button class="tool-btn" onclick="downloadPDF()" title="دانلود PDF">
+            <i data-lucide="file-text"></i>
+        </button>
+    </div>
+
+}
+else
+{
+    <div class="empty-state">
+        <h3>مدرک در دسترس نیست</h3>
+        <p>برای مشاهده مدرک، لازم است تمامی مراحل را کامل کرده و حد نصاب نمره را کسب کنید.</p>
+
+        <a class="hoshiko-btn hoshiko-outline" asp-action="Completed">
+            اطلاعات بیشتر
+        </a>
+    </div>
+}
+
+</div>
+
+<script>
+function downloadImage() {
+    const cert = document.querySelector(".certificate");
+
+        html2canvas(cert, {
+            scale: 2,
+            useCORS: true
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = "certificate.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    }
+
+    async function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const cert = document.querySelector(".certificate");
+
+        const canvas = await html2canvas(cert, {
+            scale: 2,
+            useCORS: true
+        });
+
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
+        pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+        pdf.save("certificate.pdf");
+    }
+</script>

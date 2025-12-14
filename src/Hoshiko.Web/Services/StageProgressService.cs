@@ -74,8 +74,11 @@ namespace Hoshiko.Web.Services
         }
 
 
-        public async Task MarkQuizCompletedAsync(string userId, int stageId, Dictionary<int, string> quizAnswer)
+
+        public async Task MarkQuizCompletedAsync(string userId, int stageId, Dictionary<int, string>? quizAnswer)
         {
+            if (quizAnswer == null || !quizAnswer.Any()) return;
+
             foreach (var kvp in quizAnswer)
             {
                 var answer = new UserQuizAnswer
@@ -88,8 +91,7 @@ namespace Hoshiko.Web.Services
                 _context.UserQuizAnswers.Add(answer);
             }
 
-            var progress = await _context.UserStageProgresses
-                .FirstOrDefaultAsync(p => p.UserId == userId && p.StageId == stageId);
+            var progress = await _context.UserStageProgresses.FirstOrDefaultAsync(p => p.UserId == userId && p.StageId == stageId);
 
             if (progress == null)
             {
@@ -110,6 +112,51 @@ namespace Hoshiko.Web.Services
             }
 
             await _context.SaveChangesAsync();
+        }
+
+
+
+        public async Task<bool> IsStageCompletedAsync(string userId, int stageId)
+        {
+            var progress = await _context.UserStageProgresses.FirstOrDefaultAsync(p => p.UserId == userId && p.StageId == stageId);
+
+            return progress != null && progress.IsQuizCompleted && progress.IsLearnCompleted;
+        }
+
+
+
+        public async Task<bool> ResetQuizProgressWithLimitAsync(string userId)
+        {
+            var progresses = await _context.UserStageProgresses
+                .Where(p => p.UserId == userId)
+                .ToListAsync();
+
+            if (!progresses.Any()) return false;
+
+            var anyCooldown = progresses.Any(p => 
+                p.RetryCount >= 3 &&
+                p.LastRetryAt.HasValue &&
+                DateTime.UtcNow < p.LastRetryAt.Value.AddHours(2)
+            );
+            
+            if (anyCooldown) return false;
+
+            foreach (var p in progresses)
+            {
+                if (p.LastRetryAt.HasValue && DateTime.UtcNow >= p.LastRetryAt.Value.AddHours(2)) p.RetryCount = 0;
+
+                var answers = _context.UserQuizAnswers.Where(a => a.UserId == userId && a.QuizId == p.StageId);
+                _context.UserQuizAnswers.RemoveRange(answers);
+
+                p.IsQuizCompleted = false;
+                p.CompletedAt = null;
+                p.RetryCount += 1;
+                p.LastRetryAt = DateTime.UtcNow;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

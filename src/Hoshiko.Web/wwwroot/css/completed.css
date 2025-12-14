@@ -1,0 +1,201 @@
+.certificate-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate {
+    width: 900px;
+    background: linear-gradient(135deg, #fdfcf8, #ffffff);
+    border: 12px solid #f5c542;
+    padding: 50px 60px;
+    color: #222;
+    font-family: "Vazirmatn", sans-serif;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+}
+
+
+.certificate-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.certificate-header .brand {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.certificate-header .brand-sub {
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+
+.certificate-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 40px 0 25px;
+}
+
+
+.certificate-text {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    margin: 18px 0;
+    direction: rtl;
+    unicode-bidi: plaintext;
+}
+
+
+.certificate-name {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin: 25px 0;
+    color: #000;
+}
+
+
+.certificate-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-size: 0.95rem;
+}
+
+.certificate-info span {
+    display: block;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.signature {
+    text-align: center;
+}
+
+.signature .line {
+    width: 200px;
+    height: 2px;
+    background: #333;
+    margin-bottom: 8px;
+}
+
+.seal {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #f5c542;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #f5c542;
+    transform: rotate(-12deg);
+}
+
+.certificate-wrapper {
+    position: relative;
+}
+
+.certificate-tools {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 12px;
+    z-index: 50;
+}
+
+.tool-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(245, 197, 66, 0.95);
+    color: #1e1e1e;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.25),
+        inset 0 1px 2px rgba(255,255,255,0.45);
+
+    transition: all 0.25s ease;
+}
+
+.tool-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8;
+}
+
+.tool-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 14px 35px rgba(245, 197, 66, 0.45),
+        inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+.tool-btn:active {
+    transform: scale(0.95);
+}
+
+.completed-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.retry-card,
+.empty-state {
+    background: transparent;
+    border-radius: 16px;
+    padding: 40px 45px;
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+}
+
+.retry-card h3,
+.empty-state h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.score {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.hint {
+    opacity: 0.75;
+    margin-bottom: 30px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.actions .btn {
+    min-width: 140px;
+}

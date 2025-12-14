@@ -46,6 +46,9 @@ namespace Hoshiko.Domain.Entities
         public bool IsLearnCompleted {get;set;} = false;
         public bool IsQuizCompleted {get;set;} = false;
 
+
+        public int RetryCount {get;set;} = 0;
+        public DateTime? LastRetryAt {get;set;}      
         public DateTime StartedAt {get;set;} = DateTime.UtcNow;
         public DateTime? CompletedAt {get;set;}
     }
@@ -60,5 +63,18 @@ namespace Hoshiko.Domain.Entities
         public string SelectedOption {get;set;} = null!;
         public bool IsCorrect => SelectedOption == Quiz.CorrectOption;
         public DateTime AnsweredAt {get;set;} = DateTime.UtcNow;
+    }
+
+
+
+    public class Certificate
+    {
+        public int Id {get;set;}
+        public string UserId {get;set;} = null!;
+        public string UserName {get;set;} = null!;
+        public string FullName {get;set;} = null!;
+        public DateTime IssuedAt {get;set;} = DateTime.UtcNow;
+        public string CertificateCode {get;set;} = null!;
+        public bool IsRevoked {get;set;}
     }
 }

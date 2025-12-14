@@ -11,14 +11,47 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hoshiko.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251209170416_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251213204417_QuizRetryCount")]
+    partial class QuizRetryCount
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+
+            modelBuilder.Entity("Hoshiko.Domain.Entities.Certificate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CertificateCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Certificates");
+                });
 
             modelBuilder.Entity("Hoshiko.Domain.Entities.Learn", b =>
                 {
@@ -116,6 +149,68 @@ namespace Hoshiko.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsersDomain");
+                });
+
+            modelBuilder.Entity("Hoshiko.Domain.Entities.UserQuizAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AnsweredAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SelectedOption")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
+
+                    b.ToTable("UserQuizAnswers");
+                });
+
+            modelBuilder.Entity("Hoshiko.Domain.Entities.UserStageProgress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsLearnCompleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsQuizCompleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RetryCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StageId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StageId");
+
+                    b.ToTable("UserStageProgresses");
                 });
 
             modelBuilder.Entity("Hoshiko.Infrastructure.Identity.AppUser", b =>
@@ -333,6 +428,28 @@ namespace Hoshiko.Infrastructure.Migrations
                 {
                     b.HasOne("Hoshiko.Domain.Entities.Stage", "Stage")
                         .WithMany("Quizzes")
+                        .HasForeignKey("StageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stage");
+                });
+
+            modelBuilder.Entity("Hoshiko.Domain.Entities.UserQuizAnswer", b =>
+                {
+                    b.HasOne("Hoshiko.Domain.Entities.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+                });
+
+            modelBuilder.Entity("Hoshiko.Domain.Entities.UserStageProgress", b =>
+                {
+                    b.HasOne("Hoshiko.Domain.Entities.Stage", "Stage")
+                        .WithMany()
                         .HasForeignKey("StageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

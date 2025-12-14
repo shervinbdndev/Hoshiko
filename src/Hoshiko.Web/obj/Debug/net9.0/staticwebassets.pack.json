@@ -9,6 +9,18 @@
       "PackagePath": "staticwebassets\\css\\auth.css"
     },
     {
+      "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\completed.css",
+      "PackagePath": "staticwebassets\\css\\completed.css"
+    },
+    {
+      "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\learn.css",
+      "PackagePath": "staticwebassets\\css\\learn.css"
+    },
+    {
+      "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\quiz.css",
+      "PackagePath": "staticwebassets\\css\\quiz.css"
+    },
+    {
       "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

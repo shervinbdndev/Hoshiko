@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Hoshiko.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class IntialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,24 @@ namespace Hoshiko.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Certificates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", nullable: false),
+                    IssuedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CertificateCode = table.Column<string>(type: "TEXT", nullable: false),
+                    IsRevoked = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Certificates", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,6 +249,52 @@ namespace Hoshiko.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserStageProgresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    StageId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsLearnCompleted = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsQuizCompleted = table.Column<bool>(type: "INTEGER", nullable: false),
+                    StartedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CompletedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserStageProgresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserStageProgresses_Stages_StageId",
+                        column: x => x.StageId,
+                        principalTable: "Stages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserQuizAnswers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    QuizId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SelectedOption = table.Column<string>(type: "TEXT", nullable: false),
+                    AnsweredAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserQuizAnswers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserQuizAnswers_Quizzes_QuizId",
+                        column: x => x.QuizId,
+                        principalTable: "Quizzes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -277,6 +341,16 @@ namespace Hoshiko.Infrastructure.Migrations
                 name: "IX_Quizzes_StageId",
                 table: "Quizzes",
                 column: "StageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserQuizAnswers_QuizId",
+                table: "UserQuizAnswers",
+                column: "QuizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserStageProgresses_StageId",
+                table: "UserStageProgresses",
+                column: "StageId");
         }
 
         /// <inheritdoc />
@@ -298,19 +372,28 @@ namespace Hoshiko.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Certificates");
+
+            migrationBuilder.DropTable(
                 name: "Learns");
 
             migrationBuilder.DropTable(
-                name: "Quizzes");
+                name: "UserQuizAnswers");
 
             migrationBuilder.DropTable(
                 name: "UsersDomain");
+
+            migrationBuilder.DropTable(
+                name: "UserStageProgresses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Quizzes");
 
             migrationBuilder.DropTable(
                 name: "Stages");

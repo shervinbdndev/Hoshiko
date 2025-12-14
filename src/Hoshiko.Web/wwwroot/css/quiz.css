@@ -1,0 +1,150 @@
+.quiz-wrapper {
+    max-width: 720px;
+    margin: 60px auto;
+    padding: 20px;
+    color: #fff;
+}
+
+.quiz-header h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.quiz-progress {
+    margin-bottom: 30px;
+}
+
+#progressText {
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
+    opacity: 0.85;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffc107, #ffdb6e);
+    transition: width 0.4s ease;
+}
+
+
+.quiz-slides {
+    position: relative;
+}
+
+.quiz-slide {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.quiz-slide.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-question {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+.quiz-options {
+    display: grid;
+    gap: 16px;
+}
+
+.option {
+    background: rgba(255,255,255,0.08);
+    padding: 16px 20px;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.25s;
+    border: 2px solid transparent;
+    direction: rtl;
+}
+
+.option input {
+    display: none;
+}
+
+.option span {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.option:hover {
+    background: rgba(255,193,7,0.2);
+}
+
+.option input:checked + span {
+    font-weight: 700;
+}
+
+.option input:checked ~ span,
+.option input:checked {
+    color: #000;
+}
+
+.option:has(input:checked) {
+    background: linear-gradient(135deg, #ffc107, #ffdb6e);
+    color: #000;
+    box-shadow: 0 10px 25px rgba(255,193,7,0.45);
+}
+
+
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.quiz-nav button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#prevBtn {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+#nextBtn {
+    background: #ffc107;
+    color: #000;
+}
+
+#submitBtn {
+    background: linear-gradient(135deg, #ffc107, #ffb300);
+    color: #000;
+}
+
+.quiz-nav button:hover {
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none;
+}

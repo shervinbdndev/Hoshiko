@@ -1,17 +1,82 @@
-﻿@using Hoshiko.Core.Interfaces
-@inject ICurrentUserService CurrentUser
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="koto-hero">
 
-    @if(CurrentUser.IsAuthenticated) {
-        <div class="mt-4">
-            <h3>شروع بازی</h3>
-            <a class="btn btn-primary" asp-controller="Stages" asp-action="Index">Start Game</a>
+    <div class="koto-space">
+        <div class="star-field"></div>
+
+        <div class="solar-system">
+            <div class="planet planet-left"></div>
+            <div class="sun-core"></div>
+            <div class="planet planet-right"></div>
         </div>
-    }
+
+        @for (int i = 0; i < 6; i++)
+        {
+            <div class="shooting-star" style="
+                left:@(Random.Shared.Next(0,100))%;
+                top:@(Random.Shared.Next(0,40))%;
+                animation-delay:@(Random.Shared.NextDouble()*5)s;
+                animation-duration:@(Random.Shared.Next(2,5))s;
+            "></div>
+        }
+
+        <div class="koto-particles">
+            @for (int i = 0; i < 25; i++)
+            {
+                <span style="
+                    left:@(Random.Shared.Next(0,100))%;
+                    top:@(Random.Shared.Next(0,80))%;
+                    animation-delay:@(Random.Shared.NextDouble()*3)s;
+                "></span>
+            }
+        </div>
+    </div>
+    <div class="koto-hero-content">
+        <p class="koto-subtitle">
+            <span class="koto-title">هوشیکو</span>
+            <br>
+            <span id="hero-text">ابتدا حساب کاربری می‌سازی</span>
+        </p>
+
+        <div class="koto-actions">
+            @if (User.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="koto-btn" asp-controller="Stages" asp-action="Start">شروع بازی</a>
+            }
+            else
+            {
+                <a class="koto-btn" asp-controller="Account" asp-action="Login">ورود</a>
+                <a class="koto-btn alt" asp-controller="Account" asp-action="Register">ثبت‌نام</a>
+            }
+        </div>
+    </div>
+
 </div>
+
+<script>
+    const messages = [
+        "اولین قدم: یک حساب کاربری بساز و آماده‌ی یادگیری شو",
+        "با تمرین‌های تعاملی، مهارت‌های خودت را تقویت کن",
+        "و در نهایت مدرک معتبر هوشیکو را دریافت کن و پیشرفتت را جشن بگیر"
+    ];
+
+    const subtitle = document.querySelector(".koto-hero-content .koto-subtitle");
+    let index = 0;
+
+    function showNextMessage() {
+        subtitle.classList.add("flash", "shake");
+
+        subtitle.innerHTML = `<span class="koto-title">هوشیکو</span><br>${messages[index]}`;
+
+        setTimeout(() => {
+            subtitle.classList.remove("shake");
+        }, 200);
+
+        index = (index + 1) % messages.length;
+    }
+    setInterval(showNextMessage, 4000);
+    showNextMessage();
+</script>

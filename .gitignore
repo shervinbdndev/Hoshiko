@@ -1,43 +1,52 @@
-# Build Folders
-bin/
-obj/
+# Visual Studio / .NET Core
+.vs/
+.idea/
+.vscode/
+
+# Build outputs
+**/bin/
+**/obj/
 out/
 
-# Visual Studio / Rider / VS Code settings
-.vs/
-.vscode/
-.idea/
-
-# User-specific files
-*.user
+# Visual Studio temporary files
 *.suo
+*.user
 *.userosscache
 *.sln.docstates
 
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
 
 # Logs
 *.log
 *.tlg
 *.tmd
 
-# OS generated
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Temporary files
+# Rider files
+*.sln.iml
+.idea/
+
+# ASP.NET / artifacts
+artifacts/
+project.lock.json
+
+# Optional: ignore tools or scaffold generated libraries
+wwwroot/lib/
+
+# Temporary
 *.tmp
 *.temp
 *.cache
 
-# Files for large media / assets
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.zip
-*.rar
-*.7z
+# Ignore node_modules if you ever use frontend package managers
+node_modules/
 
-# Other IDE or OS-specific files
-*.swp
-*~
+# Ignore publish folder (if used)
+publish/

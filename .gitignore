@@ -1,0 +1,43 @@
+# Build Folders
+bin/
+obj/
+out/
+
+# Visual Studio / Rider / VS Code settings
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+
+# Logs
+*.log
+*.tlg
+*.tmd
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Files for large media / assets
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.rar
+*.7z
+
+# Other IDE or OS-specific files
+*.swp
+*~

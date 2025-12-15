@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4YfJIV9C++6VJiJUqj8OsmRH/ZHb5+8kKgjMFn7NTCk=",
+  "Hash": "PrQY8Bnp0il55HtqIgdDJDY+Y037hq09cTRymAdTI94=",
   "Source": "Hoshiko.Web",
   "BasePath": "_content/Hoshiko.Web",
   "Mode": "Default",
@@ -290,12 +290,12 @@
       "OriginalItemSpec": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Identity": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-553izh6bqv.gz",
+      "Identity": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-sj9fmge9qo.gz",
       "SourceId": "Hoshiko.Web",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Hoshiko.Web",
-      "RelativePath": "css/site#[.{fingerprint=553izh6bqv}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=sj9fmge9qo}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -304,8 +304,8 @@
       "RelatedAsset": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "s4hc8cqxfu",
-      "Integrity": "vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY=",
+      "Fingerprint": "kqz6pc273c",
+      "Integrity": "lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css"
@@ -1543,8 +1543,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "553izh6bqv",
-      "Integrity": "aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc=",
+      "Fingerprint": "sj9fmge9qo",
+      "Integrity": "GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -4344,13 +4344,13 @@
       ]
     },
     {
-      "Route": "css/site.553izh6bqv.css",
-      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-553izh6bqv.gz",
+      "Route": "css/site.css",
+      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-sj9fmge9qo.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000342348511"
+          "Quality": "0.000342231348"
         }
       ],
       "ResponseHeaders": [
@@ -4360,19 +4360,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2920"
+          "Value": "2921"
         },
         {
           "Name": "ETag",
-          "Value": "\"vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY=\""
+          "Value": "\"lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -4388,26 +4388,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc=\""
+          "Value": "W/\"GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "553izh6bqv"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc="
+          "Value": "sha256-GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ="
         }
       ]
     },
     {
-      "Route": "css/site.553izh6bqv.css",
+      "Route": "css/site.css",
       "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4417,7 +4409,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12959"
+          "Value": "12849"
         },
         {
           "Name": "Content-Type",
@@ -4425,11 +4417,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc=\""
+          "Value": "\"GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-sj9fmge9qo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2921"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.sj9fmge9qo.css",
+      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-sj9fmge9qo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000342231348"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2921"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sj9fmge9qo"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.sj9fmge9qo.css",
+      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12849"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4439,7 +4576,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "553izh6bqv"
+          "Value": "sj9fmge9qo"
         },
         {
           "Name": "label",
@@ -4447,13 +4584,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc="
+          "Value": "sha256-GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ="
         }
       ]
     },
     {
-      "Route": "css/site.553izh6bqv.css.gz",
-      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-553izh6bqv.gz",
+      "Route": "css/site.sj9fmge9qo.css.gz",
+      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-sj9fmge9qo.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4462,7 +4599,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2920"
+          "Value": "2921"
         },
         {
           "Name": "Content-Type",
@@ -4470,11 +4607,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY=\""
+          "Value": "\"lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
+          "Value": "Mon, 15 Dec 2025 02:29:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4492,7 +4629,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "553izh6bqv"
+          "Value": "sj9fmge9qo"
         },
         {
           "Name": "label",
@@ -4500,144 +4637,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-553izh6bqv.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000342348511"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2920"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "12959"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-aecvvY08QTQSuCazXSbNPzNZCnynfEQR7GuaYzLJqtc="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\compressed\\76pr6b6z0e-553izh6bqv.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2920"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 15 Dec 2025 02:14:13 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-vHm6sC0NngkduAf9K+qZDcpQ1ce8dS2WZuzVtpyfRgY="
+          "Value": "sha256-lLylj3Ckf3ieKn6ULIXAX74r3DHIGYxTzN8zkoqe5qU="
         }
       ]
     },

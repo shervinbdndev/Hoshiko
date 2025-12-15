@@ -144,32 +144,30 @@ body.koto-body {
     font-size: 4rem;
     font-weight: 900;
     letter-spacing: 1px;
-    background: linear-gradient(180deg, #fff2b0 0%, #f5c542 40%, #d4a017 100%);
+    background: linear-gradient(180deg, #f5c0c0 0%, #e38b8b 100%);
+    /* text-shadow: 0 3px 10px rgba(0,0,0,0.25); */
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 25px rgba(245,197,66,0.35);
     margin: 0 0 12px 0;
 }
 
 
 @media (max-width: 1024px) {
-    .koto-title {
-        font-size: 2.2rem;   
-        letter-spacing: 0.5px;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 12px rgba(245,197,66,0.25);
-        position: absolute;
-        top: 20px;           
+    .koto-title.site-title {
+        font-size: 2.2rem;
+        top: 20px;
+        left: 50%;
         transform: translateX(-50%);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 12px rgba(56,189,248,0.25);
     }
 }
 
-
 @media (max-width: 768px) {
-    .koto-title {
+    .koto-title.site-title {
         font-size: 1.5rem;
         top: 10px;
-        transform: translateX(-50%);
-        text-shadow: 0 0 6px rgba(120,180,255,0.6);
+        text-shadow: 0 0 6px rgba(56,189,248,0.6);
     }
 }
 

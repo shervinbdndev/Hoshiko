@@ -11,22 +11,36 @@
 </head>
 
 <body class="koto-body">
-    @if (User.Identity?.IsAuthenticated ?? false)
-    {
-        <div class="koto-user-menu">
-            <div class="user-icon">
-                <i data-lucide="user"></i>
-            </div>
 
-            <div class="user-tooltip">
-                <div class="username">@User.Identity!.Name</div>
+    <div class="koto-topbar">
 
-                <form asp-controller="Account" asp-action="Logout" method="post">
-                    <button type="submit" class="logout-btn">خروج</button>
-                </form>
-            </div>
+        <div class="koto-cert-search">
+            <i data-lucide="search"></i>
+            <input
+                type="text"
+                id="certificateSearchInput"
+                placeholder="شناسه مدرک را وارد کنید..."
+            />
         </div>
-    }
+
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <div class="koto-user-menu">
+                <div class="user-icon">
+                    <i data-lucide="user"></i>
+                </div>
+
+                <div class="user-tooltip">
+                    <div class="username">@User.Identity!.Name</div>
+
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="logout-btn">خروج</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+    </div>
 
     <div class="koto-container">
         @RenderBody()
@@ -36,6 +50,55 @@
     <script>
         lucide.createIcons();
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document
+            .getElementById("certificateSearchInput")
+            ?.addEventListener("keydown", async function (e) {
+
+                if (e.key !== "Enter") return;
+
+                const code = this.value.trim();
+                if (!code) return;
+
+                Swal.fire({
+                    title: "در حال بررسی مدرک...",
+                    background: "#020617",
+                    color: "#eafff2",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                try {
+                    const res = await fetch(`/Home/Search?code=${encodeURIComponent(code)}`);
+
+                    if (!res.ok) throw new Error();
+
+                    const html = await res.text();
+
+                    Swal.fire({
+                        width: "900px",
+                        background: "#020617",
+                        color: "#eafff2",
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        html
+                    });
+
+                } catch {
+                    Swal.fire({
+                        icon: "error",
+                        title: "مدرک یافت نشد",
+                        text: "شناسه مدرک معتبر نیست یا لغو شده است",
+                        background: "#020617",
+                        color: "#eafff2",
+                        confirmButtonColor: "#22c55e"
+                    });
+                }
+            });
+        </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -9,5 +9,7 @@ namespace Hoshiko.Core.Interfaces
         Task<int> GetUserQuizScoreAsync(string userId);
         Task<int> GetTotalQuizCountAsync();
         Task<bool> HasAnyQuizAttemptAsync(string userId);
+        Task<bool> CanIssueCertificateAsync(string userId);
+        Task<Certificate?> GetByCertificateCodeAsync(string code);
     }
 }

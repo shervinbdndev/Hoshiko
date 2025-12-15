@@ -57,7 +57,7 @@ namespace Hoshiko.Web.Services
                 UserId = userId,
                 UserName = _currentUser.UserName ?? "کاربر",
                 FullName = fullName,
-                CertificateCode = $"HSK-{Guid.NewGuid():N}"[..10].ToUpper(),
+                CertificateCode = $"HSK-{Guid.NewGuid().ToString("N")[..6]}".ToUpper(),
                 IssuedAt = DateTime.UtcNow
             };
 
@@ -65,6 +65,36 @@ namespace Hoshiko.Web.Services
             await _context.SaveChangesAsync();
 
             return cert;
+        }
+
+
+
+        public async Task<bool> CanIssueCertificateAsync(string userId)
+        {
+            if (!await HasAnyQuizAttemptAsync(userId)) return false;
+
+            var correctCount = await GetUserQuizScoreAsync(userId);
+            var total = await GetTotalQuizCountAsync();
+
+            if (total == 0) return false;
+
+            var percent = (correctCount * 100) / total;
+
+            return percent >= 70;
+        }
+
+
+
+        public async Task<Certificate?> GetByCertificateCodeAsync(string code)
+        {
+            if (string.IsNullOrWhiteSpace(code)) return null;
+
+            return await _context.Certificates
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c =>
+                    EF.Functions.Like(c.CertificateCode, code) &&
+                    !c.IsRevoked
+                );
         }
     }
 }

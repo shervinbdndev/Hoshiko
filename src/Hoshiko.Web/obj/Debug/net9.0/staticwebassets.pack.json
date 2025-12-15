@@ -1,12 +1,12 @@
 {
   "Files": [
     {
-      "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Hoshiko.Web.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Hoshiko.Web.1pmrty8y38.bundle.scp.css"
-    },
-    {
       "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\auth.css",
       "PackagePath": "staticwebassets\\css\\auth.css"
+    },
+    {
+      "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\certificate.css",
+      "PackagePath": "staticwebassets\\css\\certificate.css"
     },
     {
       "Id": "D:\\Scripts\\Csharp\\ASP\\Hoshiko\\src\\Hoshiko.Web\\wwwroot\\css\\completed.css",

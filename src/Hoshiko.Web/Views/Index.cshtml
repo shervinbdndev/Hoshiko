@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Hoshiko.Domain.Entities
+@{
     Layout = "_Layout";
 }
 
@@ -34,6 +35,7 @@
             }
         </div>
     </div>
+    <br><br><br>
     <div class="koto-hero-content">
         <p class="koto-subtitle">
             <span class="koto-title">هوشیکو</span>
@@ -44,14 +46,30 @@
         <div class="koto-actions">
             @if (User.Identity?.IsAuthenticated ?? false)
             {
-                <a class="koto-btn" asp-controller="Stages" asp-action="Start">شروع بازی</a>
+                if (ViewBag.CanGetCertificate == true)
+                {
+                    <a class="koto-btn-cert"
+                    asp-controller="Stages"
+                    asp-action="Completed">
+                        <i data-lucide="award"></i>
+                        <span class="cert-text">دریافت مدرک</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="koto-btn"
+                    asp-controller="Stages"
+                    asp-action="Start">
+                        شروع بازی
+                    </a>
+                }
             }
             else
             {
                 <a class="koto-btn" asp-controller="Account" asp-action="Login">ورود</a>
                 <a class="koto-btn alt" asp-controller="Account" asp-action="Register">ثبت‌نام</a>
             }
-        </div>
+            </div>
     </div>
 
 </div>

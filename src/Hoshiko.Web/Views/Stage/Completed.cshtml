@@ -30,12 +30,18 @@
 else if (Model != null)
 {
     <div class="certificate-container">
-        @await Html.PartialAsync("_Certificate", Model)
+        <div class="certificate-scale">
+            @await Html.PartialAsync("_Certificate", Model)
+        </div>
     </div>
 
     <div class="certificate-tools">
         <button class="tool-btn" onclick="downloadImage()" title="دانلود تصویر">
             <i data-lucide="download"></i>
+        </button>
+
+        <button class="tool-btn fullscreen-btn" onclick="toggleFullscreen()" title="تمام‌صفحه">
+            <i data-lucide="maximize"></i>
         </button>
 
         <button class="tool-btn" onclick="downloadPDF()" title="دانلود PDF">
@@ -87,5 +93,17 @@ function downloadImage() {
         const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
         pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
         pdf.save("certificate.pdf");
+    }
+
+    function toggleFullscreen() {
+        const cert = document.querySelector(".certificate");
+
+        if (!document.fullscreenElement) {
+            cert.requestFullscreen?.();
+            cert.classList.add("is-fullscreen");
+        } else {
+            document.exitFullscreen?.();
+            cert.classList.remove("is-fullscreen");
+        }
     }
 </script>

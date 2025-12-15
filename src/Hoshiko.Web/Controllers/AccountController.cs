@@ -66,6 +66,7 @@ namespace Hoshiko.Web.Controllers
 
 
         [HttpPost(nameof(Logout))]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _authService.LogoutAsync();

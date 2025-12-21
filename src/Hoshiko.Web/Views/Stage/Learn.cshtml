@@ -39,7 +39,7 @@
 
     <form method="post"
           asp-action="LearnNext"
-          asp-route-stageId="@Model.Id">
+          asp-route-stageSlug="@Model.Slug">
         @Html.AntiForgeryToken()
         <button class="learn-btn hidden">
             ادامه و شروع آزمون

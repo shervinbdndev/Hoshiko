@@ -1,5 +1,23 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Hoshiko.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Hoshiko.Web</BasePath>
+      <RelativePath>css/admin.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>0s6y7onuoc</Fingerprint>
+      <Integrity>0A1Zi+lZ+/98qUWjAhFBa/9963+i//FuoAR7XTa2dV0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\auth.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Hoshiko.Web</SourceId>
@@ -48,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6zjt1qcy59</Fingerprint>
-      <Integrity>YpMl/xp21R5RPEzX2Syg3Axj+k5AyqSM2+T1fbDlBMo=</Integrity>
+      <Fingerprint>yrinaflhiu</Fingerprint>
+      <Integrity>MssmmQ7L4+O12saQps6DZ9Onm6maK0OkhIJw/AzXSP0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\completed.css'))</OriginalItemSpec>
@@ -66,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ppyq3cltll</Fingerprint>
-      <Integrity>PVWiN6zJp8k0YAMoLwG9TYPF82w3ZwoHLVij/WUEmsI=</Integrity>
+      <Fingerprint>tk0yzzgsns</Fingerprint>
+      <Integrity>k1nr0M2OjN/vpf32836roU4Q/V0644sJ/kkCL5NbCAk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\learn.css'))</OriginalItemSpec>
@@ -102,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>sj9fmge9qo</Fingerprint>
-      <Integrity>GBSmjm1VArMM7EfQ7FE26EoqEVMKfBJAAxhnSj/zOTQ=</Integrity>
+      <Fingerprint>sgu26h52jv</Fingerprint>
+      <Integrity>RH+4Azl6rQ/fU4GRwNydQNO4KHMlZAuSDJ2uW2nuyHc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>

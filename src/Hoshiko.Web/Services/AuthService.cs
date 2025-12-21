@@ -30,8 +30,8 @@ namespace Hoshiko.Web.Services
             var result = await _userManager.CreateAsync(user, password);
             if (!result.Succeeded) return false;
 
+            await _userManager.AddToRoleAsync(user, "User");
             await EnsureUserClaimsAsync(user);
-
             await _signInManager.SignInAsync(user, isPersistent: false);
 
             return true;
@@ -43,12 +43,8 @@ namespace Hoshiko.Web.Services
             var user = await _userManager.FindByNameAsync(username);
             if (user == null) return false;
 
-            var result = await _signInManager.PasswordSignInAsync(user.UserName!, password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent: false, lockoutOnFailure: false);
             if (!result.Succeeded) return false;
-
-            await EnsureUserClaimsAsync(user);
-
-            await _signInManager.SignInAsync(user, isPersistent: false);
 
             return true;
         }

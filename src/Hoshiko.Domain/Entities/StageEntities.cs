@@ -4,6 +4,7 @@ namespace Hoshiko.Domain.Entities
     {
         public int Id {get;set;}
         public string Name {get;set;} = null!;
+        public string Slug {get;set;} = null!;
 
         public ICollection<Quiz> Quizzes {get;set;} = new List<Quiz>();
         public ICollection<Learn> Learns {get;set;} = new List<Learn>();
@@ -29,6 +30,7 @@ namespace Hoshiko.Domain.Entities
     {
         public int Id {get;set;}
         public string Title {get;set;} = null!;
+        public string Slug {get;set;} = null!;
         public string Content {get;set;} = null!;
 
         public int StageId {get;set;}

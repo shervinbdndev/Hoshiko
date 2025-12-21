@@ -4,6 +4,7 @@ namespace Hoshiko.Core.Interfaces
 {
     public interface IStageProgressService
     {
+        Task<List<Stage>> GetAllStagesAsync();
         Task<Stage?> GetNextStageForUserAsync(string userId);
         Task<bool> CanAccessStageAsync(string userId, int stageId);
         Task MarkLearnCompletedAsync(string userId, int stageId);

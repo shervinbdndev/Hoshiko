@@ -1,0 +1,53 @@
+@model IEnumerable<UserProgressViewModel>
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="page-header">
+    <h2>مدیریت کاربران</h2>
+    <p>در این بخش می‌توانید کاربران و وضعیت پیشرفت آن‌ها را مشاهده کنید</p>
+</section>
+
+<div class="admin-section">
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>نام کاربری</th>
+                <th>نام و نام خانوادگی</th>
+                <th>ایمیل</th>
+                <th>پیشرفت مراحل</th>
+                <th>وضعیت آزمون‌ها</th>
+                <th>کد مدرک</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.UserName</td>
+                <td>@item.User.FirstName @item.User.LastName</td>
+                <td>@item.User.Email</td>
+                <td>
+                    @foreach (var stage in item.StagesProgress)
+                    {
+                        <span class="stage-badge @(stage.IsLearnCompleted ? "completed" : "pending")" 
+                              title="@stage.StageName">
+                            L:@(stage.IsLearnCompleted ? "✔" : "✖")
+                        </span>
+                    }
+                </td>
+                <td>
+                    @foreach (var stage in item.StagesProgress)
+                    {
+                        <span class="stage-badge @(stage.IsQuizCompleted ? "completed" : "pending")"
+                              title="@stage.StageName">
+                            Q:@(stage.IsQuizCompleted ? "✔" : "✖")
+                        </span>
+                    }
+                </td>
+                <td>@item.CertificateCode</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

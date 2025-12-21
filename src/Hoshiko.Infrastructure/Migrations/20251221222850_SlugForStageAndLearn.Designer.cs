@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hoshiko.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251213204417_QuizRetryCount")]
-    partial class QuizRetryCount
+    [Migration("20251221222850_SlugForStageAndLearn")]
+    partial class SlugForStageAndLearn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,10 @@ namespace Hoshiko.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Slug")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -124,6 +128,10 @@ namespace Hoshiko.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Slug")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -192,6 +200,9 @@ namespace Hoshiko.Infrastructure.Migrations
 
                     b.Property<bool>("IsQuizCompleted")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("LastRetryAt")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RetryCount")
                         .HasColumnType("INTEGER");

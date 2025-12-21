@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Hoshiko.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialCreate : Migration
+    public partial class SlugForStageAndLearn : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,7 +76,8 @@ namespace Hoshiko.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Slug = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -210,6 +211,7 @@ namespace Hoshiko.Infrastructure.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Slug = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
                     StageId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -259,6 +261,8 @@ namespace Hoshiko.Infrastructure.Migrations
                     StageId = table.Column<int>(type: "INTEGER", nullable: false),
                     IsLearnCompleted = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsQuizCompleted = table.Column<bool>(type: "INTEGER", nullable: false),
+                    RetryCount = table.Column<int>(type: "INTEGER", nullable: false),
+                    LastRetryAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     StartedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CompletedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },

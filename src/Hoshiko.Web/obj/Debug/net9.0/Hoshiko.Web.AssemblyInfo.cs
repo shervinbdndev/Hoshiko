@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hoshiko.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c9f686b9123ef53e0bdf13c59101c77f03e66ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4694b8bb2b5b031b42e6269345b7848af5b4b539")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hoshiko.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hoshiko.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

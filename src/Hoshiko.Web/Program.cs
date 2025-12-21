@@ -1,11 +1,11 @@
 using Hoshiko.Web.Services;
 using Hoshiko.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Hoshiko.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Hoshiko.Infrastructure.Identity;
 using Hoshiko.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +23,12 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IStageRepository, StageRepository>();
 builder.Services.AddScoped<ICertificateService, CertificateService>();
-builder.Services.AddScoped<IStageProgressService, StageProgressService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddScoped<IStageProgressService, StageProgressService>();
 
 var app = builder.Build();
 
@@ -54,8 +55,7 @@ app.MapControllerRoute(
 
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    await DbInitializer.Initialize(context);
+    await DbInitializer.Initialize(scope.ServiceProvider);
 }
 
 app.Run();

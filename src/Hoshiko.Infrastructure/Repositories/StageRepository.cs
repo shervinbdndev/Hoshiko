@@ -22,5 +22,7 @@ namespace Hoshiko.Infrastructure.Repositories
                 .Include(s => s.Learns)
                 .FirstOrDefaultAsync(s => s.Id == id);
         }
+
+        public async Task<Stage?> GetBySlugAsync(string slug) => await _context.Stages.FirstOrDefaultAsync(s => s.Slug == slug);
     }
 }

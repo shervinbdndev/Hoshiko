@@ -1,0 +1,43 @@
+@using Hoshiko.Domain.Entities
+@model Stage
+
+<section class="admin-section">
+    <h4>آموزش‌های این مرحله</h4>
+
+    @if (Model.Learns.Any())
+    {
+        <ul class="item-list">
+            @foreach (var l in Model.Learns)
+            {
+                <li class="item-row">
+                    <div>
+                        <strong>@l.Title</strong>
+                        <small class="muted">/@Model.Slug/@l.Slug</small>
+                        <span>@l.Content.Substring(0, Math.Min(60, l.Content.Length))...</span>
+
+                    </div>
+
+                    <form asp-action="DeleteLearn" method="post">
+                        <input type="hidden" name="id" value="@l.Id" />
+                        <button class="hoshiko-btn hoshiko-delete">حذف</button>
+                    </form>
+                </li>
+            }
+        </ul>
+
+    }
+    else
+    {
+        <div class="empty">آموزشی ثبت نشده</div>
+    }
+
+    <form asp-action="CreateLearn" method="post" class="admin-form">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="StageId" value="@Model.Id" />
+
+        <input name="Title" placeholder="عنوان آموزش" />
+        <textarea name="Content" placeholder="متن آموزش"></textarea>
+
+        <button class="primary">افزودن آموزش</button>
+    </form>
+</section>

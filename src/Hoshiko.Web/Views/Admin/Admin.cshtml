@@ -1,0 +1,45 @@
+@using Hoshiko.Domain.Entities
+@model IEnumerable<Stage>
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="page-header">
+    <h2>مدیریت مراحل آموزشی</h2>
+    <p>در این بخش می‌توانید مراحل، آموزش‌ها و آزمون‌ها را مدیریت کنید</p>
+</section>
+
+<div class="stages-wrapper">
+
+@foreach (var stage in Model)
+{
+    <div class="stage-card">
+
+        <div class="stage-title">
+            <div>
+                <h3>@stage.Name</h3>
+                <small class="muted">/@stage.Slug</small>
+            </div>
+
+            <form asp-action="DeleteStage" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@stage.Id" />
+                <button class="hoshiko-btn hoshiko-delete hoshiko-outline">
+                    حذف مرحله
+                </button>
+            </form>
+        </div>
+
+
+        <div class="stage-sections">
+
+            @await Html.PartialAsync("_Learns", stage)
+            @await Html.PartialAsync("_Quizzes", stage)
+
+        </div>
+    </div>
+}
+
+</div>
+
+@await Html.PartialAsync("_Stages")

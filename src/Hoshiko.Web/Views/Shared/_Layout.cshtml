@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Hoshiko.Core.Interfaces.ICurrentUserService CurrentUser
+<!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="utf-8" />
@@ -32,6 +33,16 @@
 
                 <div class="user-tooltip">
                     <div class="username">@User.Identity!.Name</div>
+
+                    <div class="user-role @(CurrentUser.IsAdmin ? "admin" : "user")">
+                        @(CurrentUser.IsAdmin ? "مدیر سیستم" : "کاربر")
+                    </div>
+
+                    @if (CurrentUser.IsAdmin) {
+                        <a asp-controller="Admin"
+                            asp-action="Index"
+                            class="admin-panel-link">پنل مدیریت</a>
+                    }
 
                     <form asp-controller="Account" asp-action="Logout" method="post">
                         <button type="submit" class="logout-btn">خروج</button>

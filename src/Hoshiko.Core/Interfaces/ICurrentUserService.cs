@@ -6,5 +6,7 @@ namespace Hoshiko.Core.Interfaces
         string? UserName {get;}
         string? FirstName {get;}
         string? LastName {get;}
+        string Role {get;}
+        bool IsAdmin {get;}
     }
 }

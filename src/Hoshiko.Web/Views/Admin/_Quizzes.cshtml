@@ -1,0 +1,46 @@
+@using Hoshiko.Domain.Entities
+@model Stage
+
+<section class="admin-section">
+    <h4>آزمون‌های این مرحله</h4>
+
+    @if (Model.Quizzes.Any())
+    {
+        <ul class="item-list">
+            @foreach (var q in Model.Quizzes)
+            {
+                <li class="item-row">
+                    <div>
+                        <strong>@q.Question</strong>
+                        <small>پاسخ صحیح: @q.CorrectOption</small>
+                    </div>
+
+                    <form asp-action="DeleteQuiz" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@q.Id" />
+                        <button class="hoshiko-btn hoshiko-delete">حذف</button>
+                    </form>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div class="empty">سوالی ثبت نشده</div>
+    }
+
+    <form asp-action="CreateQuiz" method="post" class="admin-form grid-2">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="StageId" value="@Model.Id" />
+
+        <input name="Question" placeholder="صورت سوال" />
+        <input name="CorrectOption" placeholder="گزینه صحیح (A-D)" />
+
+        <input name="OptionA" placeholder="گزینه A" />
+        <input name="OptionB" placeholder="گزینه B" />
+        <input name="OptionC" placeholder="گزینه C" />
+        <input name="OptionD" placeholder="گزینه D" />
+
+        <button class="primary">افزودن سوال</button>
+    </form>
+</section>

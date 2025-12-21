@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8" />
+    <title>پنل مدیریت</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin.css" />
+</head>
+
+<body dir="rtl">
+
+    <header class="admin-header">
+
+        <div class="header-left">
+            <div class="logo">هوشیکو</div>
+            <span class="badge">پنل مدیریت</span>
+        </div>
+
+        <div class="header-center">
+            <span class="page-title">مدیریت مراحل آموزشی</span>
+        </div>
+
+        <div class="header-right">
+            <div class="admin-info">
+                <span class="admin-name">@User.Identity!.Name</span>
+                <span class="admin-role">مدیر سیستم</span>
+            </div>
+
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button class="logout-btn">خروج</button>
+            </form>
+        </div>
+
+    </header>
+
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <ul>
+                <li>
+                    <a asp-controller="Admin" asp-action="Index">مدیریت مراحل</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="Users">مدیریت کاربران</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            @RenderBody()
+        </main>
+
+    </div>
+
+</body>
+</html>

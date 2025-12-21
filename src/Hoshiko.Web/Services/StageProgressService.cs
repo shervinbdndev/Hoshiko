@@ -16,6 +16,9 @@ namespace Hoshiko.Web.Services
 
 
 
+        public async Task<List<Stage>> GetAllStagesAsync() => await _context.Stages.OrderBy(s => s.Id).ToListAsync();
+
+
         public async Task<Stage?> GetNextStageForUserAsync(string userId)
         {
             var completedStageIds = await _context.UserStageProgresses

@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <form method="post" asp-action="SubmitQuiz" asp-route-stageId="@ViewBag.StageId">
+    <form method="post" asp-action="SubmitQuiz" asp-route-stageSlug="@ViewBag.StageSlug">
         @Html.AntiForgeryToken()
 
         <div class="quiz-slides">

@@ -3,6 +3,8 @@
     margin: 60px auto;
     padding: 0 20px 60px;
     color: #f9fafb;
+    direction: rtl;
+    unicode-bidi: plaintext;
 }
 
 

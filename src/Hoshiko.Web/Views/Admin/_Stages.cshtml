@@ -1,0 +1,9 @@
+<section class="create-stage">
+    <h3>ایجاد مرحله جدید</h3>
+
+    <form asp-action="CreateStage" method="post" class="admin-form">
+        @Html.AntiForgeryToken()
+        <input name="Name" placeholder="نام مرحله" />
+        <button class="success">ایجاد مرحله</button>
+    </form>
+</section>

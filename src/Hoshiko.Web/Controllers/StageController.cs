@@ -3,7 +3,6 @@ using Hoshiko.Core.Interfaces;
 using Hoshiko.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Hoshiko.Infrastructure.Repositories;
 
 namespace Hoshiko.Web.Controllers
 {
@@ -29,6 +28,10 @@ namespace Hoshiko.Web.Controllers
 
 
         private string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        private async Task<Stage?> GetStageSlug(string stageSlug)
+        {
+            return await _stageRepo.GetBySlugAsync(stageSlug);
+        }
         
 
 
@@ -56,7 +59,7 @@ namespace Hoshiko.Web.Controllers
                 return View(nameof(Completed), cert);
             }
 
-            return RedirectToAction(nameof(Learn), new { stageId = nextStage.Id });
+            return RedirectToAction(nameof(Learn), new { stageSlug = nextStage.Slug });
         }
 
 
@@ -75,57 +78,66 @@ namespace Hoshiko.Web.Controllers
 
 
 
-        [HttpGet("Learn/{stageId}")]
-        public async Task<IActionResult> Learn(int stageId)
+        [HttpGet("{stageSlug}/Learn")]
+        public async Task<IActionResult> Learn(string stageSlug)
         {
-            var deny = await CheckAccess(stageId);
-            if (deny != null) return deny;
-
-            var stage = await _stageRepo.GetWithQuizzesAsync(stageId);
-            return stage == null ? NotFound() : View(stage);
-        }
-
-
-
-        [HttpPost("LearnNext/{stageId}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LearnNext(int stageId)
-        {
-            await _progressService.MarkLearnCompletedAsync(GetUserId(), stageId);
-
-            return RedirectToAction(nameof(Quiz), new { stageId });
-        }
-
-
-
-        [HttpGet("Quiz/{stageId}")]
-        public async Task<IActionResult> Quiz(int stageId)
-        {
-            var deny = await CheckAccess(stageId);
-            if (deny != null) return deny;
-
-            var stage = await _stageRepo.GetWithQuizzesAsync(stageId);
-
-            ViewBag.StageId = stageId;
-
-            return stage == null ? NotFound() : View(stage.Quizzes);
-        }
-
-
-
-        [HttpPost("SubmitQuiz/{stageId}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SubmitQuiz(int stageId, [FromForm] Dictionary<int, string>? answers)
-        {
-            var userId = GetUserId();
-
-            var stage = await _stageRepo.GetByIdAsync(stageId);
+            var stage = await GetStageSlug(stageSlug);
             if (stage == null) return NotFound();
 
-            if (!await _progressService.CanAccessStageAsync(userId, stageId)) return Forbid();
-            if (await _progressService.IsStageCompletedAsync(userId, stageId)) return BadRequest("این مرحله قبلا کامل شده و امکان ثبت دوباره وجود ندارد");
+            var deny = await CheckAccess(stage.Id);
+            if (deny != null) return deny;
 
-            await _progressService.MarkQuizCompletedAsync(userId, stageId, answers!);
+            var fullStage = await _stageRepo.GetWithQuizzesAsync(stage.Id);
+            return View(fullStage);
+        }
+
+
+
+        [HttpPost("{stageSlug}/LearnNext")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LearnNext(string stageSlug)
+        {
+            var stage = await GetStageSlug(stageSlug);
+            if (stage == null) return NotFound();
+
+            await _progressService.MarkLearnCompletedAsync(GetUserId(), stage.Id);
+
+            return RedirectToAction(nameof(Quiz), new { stageSlug });
+        }
+
+
+
+        [HttpGet("{stageSlug}/Quiz")]
+        public async Task<IActionResult> Quiz(string stageSlug)
+        {
+            var stage = await GetStageSlug(stageSlug);
+            if (stage == null) return NotFound();
+
+            var deny = await CheckAccess(stage.Id);
+            if (deny != null) return deny;
+
+            var fullStage = await _stageRepo.GetWithQuizzesAsync(stage.Id);
+
+            ViewBag.StageSlug = stageSlug;
+
+            return View(fullStage.Quizzes);
+        }
+
+
+
+        [HttpPost("{stageSlug}/SubmitQuiz")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubmitQuiz(string stageSlug, [FromForm] Dictionary<int, string>? answers)
+        {
+            var stage = await GetStageSlug(stageSlug);
+            if (stage == null) return NotFound();
+
+            var userId = GetUserId();
+
+            if (!await _progressService.CanAccessStageAsync(userId, stage.Id)) return Forbid();
+            if (await _progressService.IsStageCompletedAsync(userId, stage.Id)) return BadRequest("این مرحله قبلا کامل شده و امکان ثبت دوباره وجود ندارد");
+
+            await _progressService.MarkQuizCompletedAsync(userId, stage.Id, answers!);
 
             return RedirectToAction(nameof(Start));
         }
